@@ -20,8 +20,7 @@ class Authenticate
      * @param  \Illuminate\Contracts\Auth\Factory  $auth
      * @return void
      */
-    public function __construct(Auth $auth)
-    {
+    public function __construct(Auth $auth){
         $this->auth = $auth;
     }
 
@@ -33,12 +32,24 @@ class Authenticate
      * @param  string|null  $guard
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = null)
-    {
+    public function handle($request, Closure $next, $guard = null){
         if ($this->auth->guard($guard)->guest()) {
-            return response('Unauthorized.', 401);
-        }
+            if ($request->has('api_token')) {
+                $token = $request->input('api_token');
+                $check_token = User::where('api_token', $token)->first();
+                if ($check_token == null) {
+                    $res['success'] = false;
+                    $res['message'] = 'Permission not allowed!';
 
+                    return response($res);
+                }
+            }else{
+                $res['success'] = false;
+                $res['message'] = 'Login please!';
+
+                return response($res);
+            }
+        }
         return $next($request);
     }
 }

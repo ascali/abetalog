@@ -15,3 +15,16 @@ $app->get('/', function () use ($app) {
     // return $router->app->version();
     return view('index');
 });
+
+
+$app->group(['prefix'=>'api/v1'], function() use($app){
+	$app->get('/', function () use ($app) {
+	  $res['success'] = true;
+	  $res['result'] = "Hello there, welcome to web api a beta log!";
+	  return response($res);
+	});
+
+	$app->post('/login', 'LoginController@index');
+	$app->post('/register', 'UserController@register');
+	$app->get('/user/{id}', ['middleware' => 'auth', 'uses' =>  'UserController@get_user']);
+});
