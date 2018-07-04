@@ -27,4 +27,17 @@ $app->group(['prefix'=>'api/v1'], function() use($app){
 	$app->post('/login', 'LoginController@index');
 	$app->post('/register', 'UserController@register');
 	$app->get('/user/{id}', ['middleware' => 'auth', 'uses' =>  'UserController@get_user']);
+
+	/*
+	 | --------------------------------------------
+	 | CRUD Routes using auth middleware per module
+	 | --------------------------------------------
+	*/
+	/* Role */
+	$app->get('/role', 'RoleController@index');
+	$app->get('/role/{id}', 'RoleController@read');
+	$app->post('/role', 'RoleController@create');
+	$app->post('/role/update/{id}', 'RoleController@update');
+	$app->post('/role/delete/{id}', 'RoleController@delete');
+	/* End Role*/
 });
