@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-=======
 # a beta log!
 This web is simple blog to explore using rest full api with lumen
->>>>>>> eee3109a9aeb4d3b494f70880330ce4407b5063d
 
 # :trident: :octocat: How to lumen :cyclone: :banana: :full_moon: :earth_asia: :four_leaf_clover: :cat2:
 
@@ -18,10 +15,27 @@ This web is simple blog to explore using rest full api with lumen
 ## To run seeder 
 1. create seeder on seeds/SeederName.php
 2. ``` composer dump-autoload ```
-<<<<<<< HEAD
-3. ``` php artisan migrate:refresh --seed ```
-=======
 3. ``` php artisan migrate:refresh --seed ```
 
+## Set up .env
+``` 
+APP_ENV=local
+APP_DEBUG=true
+APP_KEY=base64:JHdpwwjAk2lQxJtLfvoLxy8D2vQZW8ats0GEYF9GuLaCY=
+APP_TIMEZONE=UTC
+
+LOG_CHANNEL=stack
+LOG_SLACK_WEBHOOK_URL=
+
+DB_CONNECTION=mysql
+DB_HOST=localhost
+DB_PORT=3306
+DB_DATABASE=abetalog
+DB_USERNAME=root
+DB_PASSWORD=root
+
+CACHE_DRIVER=array
+SESSION_DRIVER=array
+QUEUE_DRIVER=array
+```
 ## Feel Free to update ...
->>>>>>> eee3109a9aeb4d3b494f70880330ce4407b5063d
