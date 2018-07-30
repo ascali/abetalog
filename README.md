@@ -14,6 +14,20 @@ This web is simple blog to explore using rest full api with lumen
 
 ## To run seeder 
 1. create seeder on seeds/SeederName.php
+   ```php
+	<?php
+	use Illuminate\Database\Seeder;
+	use Illuminate\Database\Eloquent\Model;
+	class SeederName extends Seeder {
+	    public function run()
+	    {
+	        DB::table('seeder_tables')->delete();
+	        $category = app()->make('App\ModelSeeder');
+	        $category->fill(['name' => 'test seeder']);
+	        $category->save();
+	    }
+	}
+   ```
 2. ``` composer dump-autoload ```
 3. ``` php artisan migrate:refresh --seed ```
 
@@ -37,5 +51,11 @@ DB_PASSWORD=root
 CACHE_DRIVER=array
 SESSION_DRIVER=array
 QUEUE_DRIVER=array
+```
+
+## Set up db heroku
+```
+
+heroku config:set APP_ENV=production APP_KEY=base64 APP_DEBUG=false APP_LOG=errorlog DB_CONNECTION=mysql DB_HOST=dbhost DB_PORT=3306 DB_DATABASE=dbname DB_USERNAME=dbusername DB_PASSWORD=dbpass CACHE_DRIVER=array SESSION_DRIVER=array QUEUE_DRIVER=array
 ```
 ## Feel Free to update ...
