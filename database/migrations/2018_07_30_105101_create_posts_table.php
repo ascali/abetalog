@@ -22,7 +22,6 @@ class CreatePostsTable extends Migration
             $table->longText('post_content')->nullable();
             $table->string('post_status', 20)->nullable()->default('draft');
             $table->string('post_type', 11)->nullable();
-            $table->tinyInteger('post_has_article', 4)->nullable()->default(0);
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('author_id')

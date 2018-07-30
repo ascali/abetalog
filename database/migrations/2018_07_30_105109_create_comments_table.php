@@ -17,7 +17,7 @@ class CreateCommentsTable extends Migration
             $table->increments('id');
             $table->integer('post_id')->unsigned();
             $table->integer('user_id')->unsigned()->nullable();
-            $table->varchar('comment')->nullable();
+            $table->string('comment')->nullable();
             $table->integer('approval')->nullable()->default(0);
             $table->integer('count')->nullable()->default(0);
             $table->timestamps();
