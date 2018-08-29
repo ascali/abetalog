@@ -17,6 +17,16 @@ $app->get('/', function () use ($app) {
 });
 
 
+
+$app->get('/tes', function () use ($app) {
+    return view('pusher');
+});
+
+$app->get('/tes/pusher', 'ExampleController@pusher');
+
+
+
+
 $app->group(['prefix'=>'api/v1'], function() use($app){
 	$app->get('/', function () use ($app) {
 	  $res['success'] = true;
