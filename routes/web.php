@@ -17,7 +17,6 @@ $app->get('/', function () use ($app) {
 });
 
 
-
 $app->get('/tes', function () use ($app) {
     return view('pusher');
 });
